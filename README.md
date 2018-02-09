@@ -1,10 +1,10 @@
 <a name="IntegratingNODEJSandKafka"></a>
 
-#Integrating NODEJS and Kafka  
+# Integrating NODEJS and Kafka  
 
 ---
 
-###Table of Contents
+### Table of Contents
 
 1. <a href="#IntegratingNODEJSandKafka">Integrating NODEJS and Kafka</a>
 2. <a href="#InstallingKAFKASingleNodeQuickStart">Installing KAFKA Single Node - Quick Start.</a>
@@ -64,7 +64,7 @@ This is a simple HOWTO to get started.
 
 ## Download and  Extract
 
-Download the `tgz` file and extract. 
+Download the `tgz` file and extract.
 
 	[kafka-admin@kafka Downloads]$ ls
 	jdk-7u75-linux-x64.rpm  kafka_2.9.2-0.8.2.0.tgz
@@ -103,24 +103,24 @@ This will start us a zookeeper in `localhost` on port `2181`. This configuration
 
 	[kafka-admin@kafka kafka]$ bin/kafka-server-start.sh config/server.properties
 
-NOTE : If you want to start multiple make sure you make multiple copies of the `server.properties` file and change the below information. 
+NOTE : If you want to start multiple make sure you make multiple copies of the `server.properties` file and change the below information.
 
 1. `broker.id` is the unique identifier for the service.
 2. `port` where this server is going to `listen` on.
-3. `log.dir` where to right the log. 
+3. `log.dir` where to right the log.
 
- 
+
 	config/server-1.properties:
 	    broker.id=1
 	    port=9093
 	    log.dir=/tmp/kafka-logs-1
-	 
+
 	config/server-2.properties:
 	    broker.id=2
 	    port=9094
 	    log.dir=/tmp/kafka-logs-2
 
-Now our server has started, lets assume we start only one server. 
+Now our server has started, lets assume we start only one server.
 
 
 
@@ -128,9 +128,9 @@ Now our server has started, lets assume we start only one server.
 
 <a name="CreatingTopics"></a>
 
-## Creating Topics 
+## Creating Topics
 
-To create a topic just execute below command, this will create a single partition. 
+To create a topic just execute below command, this will create a single partition.
 
 	[kafka-admin@kafka kafka]$ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
 
@@ -138,7 +138,7 @@ To check topics currently running. Execute below command.
 
 	[kafka-admin@kafka kafka]$ bin/kafka-topics.sh --list --zookeeper localhost:2181
 	test
-	[kafka-admin@kafka kafka]$ 
+	[kafka-admin@kafka kafka]$
 
 We see currently we have only one topic. Now we are all set to send and recv messages.
 
@@ -150,7 +150,7 @@ We see currently we have only one topic. Now we are all set to send and recv mes
 
 <a name="Sendsomemessage"></a>
 
-## Send some message 
+## Send some message
 
 Open up a new terminal and fire up the Kafka producer script as below. And start typing some message `\n` or `cr` will be end of each message
 
@@ -165,9 +165,9 @@ Open up a new terminal and fire up the Kafka producer script as below. And start
 
 <a name="StartaConsumer"></a>
 
-## Start a Consumer 
+## Start a Consumer
 
-Open a new terminal and start the consumer. 
+Open a new terminal and start the consumer.
 
 Option `--from-beginning` will give all the messages from the beginning. You will see 2 messages as we typed above `This is a message` and `This is a message2`.
 
@@ -193,7 +193,7 @@ Our single node Kafka cluster is Ready.
 
 <a name="Installingnodejsandnpmoncentosisverysimple"></a>
 
-##Installing `nodejs` and `npm` on centos is very simple.
+## Installing `nodejs` and `npm` on centos is very simple.
 
 	[nginx-admin@nginx ~]$ sudo su
 	[nginx-admin@nginx ~]# curl -sL https://rpm.nodesource.com/setup | bash -
@@ -205,10 +205,10 @@ Our single node Kafka cluster is Ready.
 
 <a name="Installinggcccandmake"></a>
 
-##Installing `gcc-c++` and `make`.
+## Installing `gcc-c++` and `make`.
 
 	[nginx-admin@nginx ~]$ sudo yum install gcc-c++ make
-	[sudo] password for nginx-admin: 
+	[sudo] password for nginx-admin:
 	Loaded plugins: fastestmirror, refresh-packagekit, security
 	Setting up Install Process
 	Loading mirror speeds from cached hostfile
@@ -219,7 +219,7 @@ Our single node Kafka cluster is Ready.
 	Package 1:make-3.81-20.el6.x86_64 already installed and latest version
 	Resolving Dependencies
 	...           
-	
+
 	Complete!
 
 
@@ -229,14 +229,14 @@ Our single node Kafka cluster is Ready.
 
 <a name="Lateronwewillneedkafkanodeletsinstallthataswell"></a>
 
-##Later on we will need `kafka-node` lets install that as well.
+## Later on we will need `kafka-node` lets install that as well.
 
 	[nginx-admin@nginx ~]$ sudo npm install kafka-node
-	[sudo] password for nginx-admin: 
-	 
+	[sudo] password for nginx-admin:
+
 	> snappy@3.0.6 install /home/nginx-admin/node_modules/kafka-node/node_modules/snappy
 	> node-gyp rebuild
-	
+
 	gyp WARN EACCES user "root" does not have permission to access the dev dir "/root/.node-gyp/0.10.36"
 	gyp WARN EACCES attempting to reinstall using temporary dev dir "/home/nginx-admin/node_modules/kafka-node/node_modules/snappy/.node-gyp"
 	make: Entering directory `/home/nginx-admin/node_modules/kafka-node/node_modules/snappy/build'
@@ -273,7 +273,7 @@ Our single node Kafka cluster is Ready.
 ## Lets do a test.
 
 Create a script called `example.js` with below code.
-	
+
 	var http = require('http');
 	http.createServer(function (req, res) {
 	  res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -283,9 +283,9 @@ Create a script called `example.js` with below code.
 
 Lets start the server on a terminal.
 
-	[nginx-admin@nginx nodejs]$ node example.js 
+	[nginx-admin@nginx nodejs]$ node example.js
 	Server running at http://127.0.0.1:1337/
-	
+
 Hit the URL from the browser and We can see `Hello World`.
 So we are all set.  
 
@@ -303,7 +303,7 @@ Here is a simple script to handle JSON data.
 
 	//	Getting some 'http' power
 	var http=require('http');
-	
+
 	//	Setting where we are expecting the request to arrive.
 	//	http://localhost:8125/upload
 	var request = {
@@ -312,19 +312,19 @@ Here is a simple script to handle JSON data.
 					path: '/upload',
 					method: 'GET'
 				};
-	
+
 	//	Lets create a server to wait for request.
-	http.createServer(function(request, response) 
+	http.createServer(function(request, response)
 	{
 		//	Making sure we are waiting for a JSON.
 	    response.writeHeader(200, {"Content-Type": "application/json"});
-		
+
 		//	request.on waiting for data to arrive.
-	    request.on('data', function (chunk) 
+	    request.on('data', function (chunk)
 		{
 			//	CHUNK which we recive from the clients
 			//	For out request we are assuming its going to be a JSON data.
-			//	We print it here on the console. 
+			//	We print it here on the console.
 			console.log(chunk.toString('utf8'))
 	    });
 		//end of request
@@ -335,18 +335,18 @@ Here is a simple script to handle JSON data.
 
 Lets fire up the script.
 
-	[nginx-admin@nginx nodejs]$ node node_recv_json.js 
+	[nginx-admin@nginx nodejs]$ node node_recv_json.js
 
 On a new terminal send some request to our script. Our script is listening on `8125` port.
 
 	[nginx-admin@nginx nodejs]$ curl -H "Content-Type: application/json" -d '{"username":"xyz","password":"xyz"}' http://localhost:8125/upload
-	
+
 You will see the message received on the script terminal.
 
-	[nginx-admin@nginx nodejs]$ node node_recv_json.js 
+	[nginx-admin@nginx nodejs]$ node node_recv_json.js
 	{"username":"xyz","password":"xyz"}
 
-Now we are all set to do some RND. 
+Now we are all set to do some RND.
 
 
 
@@ -355,12 +355,12 @@ Now we are all set to do some RND.
 
 <a name="NodeJSKafkaProducerUsingkafkanode"></a>
 
-##NodeJS Kafka Producer - Using `kafka-node`
+## NodeJS Kafka Producer - Using `kafka-node`
 
 
 Now that we have Kafka and NodeJS ready. Lets some data to our Kafka Cluster.
 
-Below is a basic producer code. 
+Below is a basic producer code.
 
 below are the Server Details.
 
@@ -374,49 +374,49 @@ below are the Server Details.
 
 <a name="Step1Copythebelowscriptinafilecalledproducernodejsjs"></a>
 
-###Step 1 - Copy the below script in a file called `producer_nodejs.js`.
+## #Step 1 - Copy the below script in a file called `producer_nodejs.js`.
 
 	/*
 		Basic producer to send data to kafka from nodejs.
 		More Information Here : https://www.npmjs.com/package/kafka-node
 	*/
-	 
+
 	//	Using kafka-node - really nice library
 	//	create a producer and connect to a Zookeeper to send the payloads.
 	var kafka = require('kafka-node'),
 	    Producer = kafka.Producer,
 	    client = new kafka.Client('kafka:2181'),
 	    producer = new Producer(client);
-	
+
 		/*
 			Creating a payload, which takes below information
 			'topic' 	-->	this is the topic we have created in kafka. (test)
 			'messages' 	-->	data which needs to be sent to kafka. (JSON in our case)
 			'partition' -->	which partition should we send the request to. (default)
-							
-							example command to create a topic in kafka: 
+
+							example command to create a topic in kafka:
 							[kafka@kafka kafka]$ bin/kafka-topics.sh \
 										--create --zookeeper localhost:2181 \
 										--replication-factor 1 \
 										--partitions 1 \
 										--topic test
-							
+
 							If there are multiple partition, then we optimize the code here,
-							so that we send request to different partitions. 
-							
+							so that we send request to different partitions.
+
 		*/
 		payloads = [
 	        { topic: 'test', messages: 'This is the First Message I am sending', partition: 0 },
 	    ];
-	
-	
+
+
 	//	producer 'on' ready to send payload to kafka.
 	producer.on('ready', function(){
 		producer.send(payloads, function(err, data){
 			console.log(data)
 		});
 	});
-	
+
 	producer.on('error', function(err){}
 
 
@@ -426,7 +426,7 @@ below are the Server Details.
 
 <a name="Step2StartthekafkaclusteraswealreadydidinInstallationofKafkaAssumingtopicastest"></a>
 
-###Step 2 - Start the `kafka` cluster as we already did in `Installation of Kafka`. Assuming topic as `test`
+## #Step 2 - Start the `kafka` cluster as we already did in `Installation of Kafka`. Assuming topic as `test`
 
 
 
@@ -434,7 +434,7 @@ below are the Server Details.
 
 <a name="Step3Starttheconsumerserviceasinthebelowcommand"></a>
 
-###Step 3 - Start the consumer service as in the below command.
+## #Step 3 - Start the consumer service as in the below command.
 
 	[kafka-admin@kafka kafka]$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
 
@@ -444,7 +444,7 @@ below are the Server Details.
 
 <a name="Step4ExecutebelowcommandThiswillsendThisistheFirstMessageIamsendingMessagetotheKafkaconsumer"></a>
 
-###Step 4 - Execute below command. This will send `This is the First Message I am sending` Message to the Kafka consumer. 
+## #Step 4 - Execute below command. This will send `This is the First Message I am sending` Message to the Kafka consumer.
 
 
 	[nodejs-admin@nodejs nodejs]$ node producer_nodejs.js
@@ -456,12 +456,12 @@ below are the Server Details.
 
 <a name="Step5Checkontheconsumeryouwillseethemessagesentfromnodejs"></a>
 
-###Step 5 - Check on the consumer you will see the message sent from `nodejs`.
+## #Step 5 - Check on the consumer you will see the message sent from `nodejs`.
 
 
 	[kafka-admin@kafka kafka_2.9.2-0.8.2.0]$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
 	This is a message
-	This is another message here 
+	This is another message here
 	This is the First Message I am sending
 
 
@@ -486,18 +486,18 @@ What we are trying to achieve ?
 
 <a name="Step1Createascriptcalledjsonnodejskafkajswithbelowscript"></a>
 
-###Step 1 - Create a script called `json_nodejs_kafka.js` with below script. 
+## #Step 1 - Create a script called `json_nodejs_kafka.js` with below script.
 
-	
+
 	/*
 		Getting some 'http' power
 	*/
 	var http=require('http');
-	
+
 	/*
 		Setting where we are expecting the request to arrive.
 		http://localhost:8125/upload
-		
+
 	*/
 	var request = {
 	        hostname: 'localhost',
@@ -505,7 +505,7 @@ What we are trying to achieve ?
 	        path: '/upload',
 	        method: 'GET'
 	};
-	
+
 	/*
 		Lets create a server to wait for request.
 	*/
@@ -515,21 +515,21 @@ What we are trying to achieve ?
 			Making sure we are waiting for a JSON.
 		*/
 	    response.writeHeader(200, {"Content-Type": "application/json"});
-	    
+
 		/*
 			request.on waiting for data to arrive.
 		*/
 		request.on('data', function (chunk)
 	    {
-		
-			/* 
+
+			/*
 				CHUNK which we recive from the clients
 				For out request we are assuming its going to be a JSON data.
-				We print it here on the console. 
+				We print it here on the console.
 			*/
 			console.log(chunk.toString('utf8'))
-	
-			/* 
+
+			/*
 				Using kafka-node - really nice library
 				create a producer and connect to a Zookeeper to send the payloads.
 			*/
@@ -537,20 +537,20 @@ What we are trying to achieve ?
 			Producer = kafka.Producer,
 			client = new kafka.Client('kafka:2181'),
 			producer = new Producer(client);
-			
+
 			/*
 				Creating a payload, which takes below information
 				'topic' 	-->	this is the topic we have created in kafka.
 				'messages' 	-->	data which needs to be sent to kafka. (JSON in our case)
 				'partition' -->	which partition should we send the request to.
 								If there are multiple partition, then we optimize the code here,
-								so that we send request to different partitions. 
-								
+								so that we send request to different partitions.
+
 			*/
 				payloads = [
 				{ topic: 'test', messages: chunk.toString('utf8'), partition: 0 },
 			];
-	
+
 			/*
 				producer 'on' ready to send payload to kafka.
 			*/
@@ -559,21 +559,21 @@ What we are trying to achieve ?
 						console.log(data)
 				});
 			});
-	
+
 			/*
 				if we have some error.
 			*/
 			producer.on('error', function(err){})
-	
+
 	    });
 		/*
 			end of request
 		*/
 	    response.end();
-		
+
 	/*
 		Listen on port 8125
-	*/	
+	*/
 	}).listen(8125);
 
 
@@ -583,7 +583,7 @@ What we are trying to achieve ?
 
 <a name="Step2Startabovescriptonthenodejsserver"></a>
 
-###Step 2 - Start above script on the `nodejs` server.
+## #Step 2 - Start above script on the `nodejs` server.
 
 	[nodejs-admin@nodejs nodejs]$ vim json_nodejs_kafka.js
 	[nodejs-admin@nodejs nodejs]$ node json_nodejs_kafka.js
@@ -595,7 +595,7 @@ What we are trying to achieve ?
 
 <a name="Step3ExecutecurlcommandtosendtheJSONtonodejs"></a>
 
-###Step 3 - Execute `curl` command to send the JSON to `nodejs`.
+## #Step 3 - Execute `curl` command to send the JSON to `nodejs`.
 
 	[nodejs-admin@nodejs nodejs]$ curl -H "Content-Type: application/json" -d '{"username":"xyz","password":"xyz"}' http://localhost:8125/upload
 
@@ -606,9 +606,9 @@ What we are trying to achieve ?
 
 <a name="Step4Outputonnodejsconsole"></a>
 
-###Step 4 - Output on nodejs console
+## #Step 4 - Output on nodejs console
 
-	[nodejs-admin@nodejs nodejs]$ node json_nodejs_kafka.js 
+	[nodejs-admin@nodejs nodejs]$ node json_nodejs_kafka.js
 	{"username":"xyz","password":"xyz"}
 	{ test: { '0': 29 } }
 
@@ -622,7 +622,7 @@ What we are trying to achieve ?
 
 <a name="Step5Outputonthekafkaconsumerside"></a>
 
-###Step 5 - Output on the `kafka` consumer side.
+## #Step 5 - Output on the `kafka` consumer side.
 
 	[kafka-admin@kafka kafka_2.9.2-0.8.2.0]$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
 	{"username":"xyz","password":"xyz"}
@@ -636,7 +636,7 @@ What we are trying to achieve ?
 
 <a name="UsefulLinks"></a>
 
-#### Useful Links.
+## ## Useful Links.
 
 [http://kafka.apache.org/documentation.html](http://kafka.apache.org/documentation.html "Kafka Documentation")
 
