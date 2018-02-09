@@ -374,7 +374,7 @@ below are the Server Details.
 
 <a name="Step1Copythebelowscriptinafilecalledproducernodejsjs"></a>
 
-## #Step 1 - Copy the below script in a file called `producer_nodejs.js`.
+### Step 1 - Copy the below script in a file called `producer_nodejs.js`.
 
 	/*
 		Basic producer to send data to kafka from nodejs.
@@ -426,7 +426,7 @@ below are the Server Details.
 
 <a name="Step2StartthekafkaclusteraswealreadydidinInstallationofKafkaAssumingtopicastest"></a>
 
-## #Step 2 - Start the `kafka` cluster as we already did in `Installation of Kafka`. Assuming topic as `test`
+### Step 2 - Start the `kafka` cluster as we already did in `Installation of Kafka`. Assuming topic as `test`
 
 
 
@@ -434,7 +434,7 @@ below are the Server Details.
 
 <a name="Step3Starttheconsumerserviceasinthebelowcommand"></a>
 
-## #Step 3 - Start the consumer service as in the below command.
+### Step 3 - Start the consumer service as in the below command.
 
 	[kafka-admin@kafka kafka]$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
 
@@ -444,7 +444,7 @@ below are the Server Details.
 
 <a name="Step4ExecutebelowcommandThiswillsendThisistheFirstMessageIamsendingMessagetotheKafkaconsumer"></a>
 
-## #Step 4 - Execute below command. This will send `This is the First Message I am sending` Message to the Kafka consumer.
+### Step 4 - Execute below command. This will send `This is the First Message I am sending` Message to the Kafka consumer.
 
 
 	[nodejs-admin@nodejs nodejs]$ node producer_nodejs.js
@@ -456,7 +456,7 @@ below are the Server Details.
 
 <a name="Step5Checkontheconsumeryouwillseethemessagesentfromnodejs"></a>
 
-## #Step 5 - Check on the consumer you will see the message sent from `nodejs`.
+### Step 5 - Check on the consumer you will see the message sent from `nodejs`.
 
 
 	[kafka-admin@kafka kafka_2.9.2-0.8.2.0]$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
@@ -486,7 +486,7 @@ What we are trying to achieve ?
 
 <a name="Step1Createascriptcalledjsonnodejskafkajswithbelowscript"></a>
 
-## #Step 1 - Create a script called `json_nodejs_kafka.js` with below script.
+### Step 1 - Create a script called `json_nodejs_kafka.js` with below script.
 
 
 	/*
@@ -583,7 +583,7 @@ What we are trying to achieve ?
 
 <a name="Step2Startabovescriptonthenodejsserver"></a>
 
-## #Step 2 - Start above script on the `nodejs` server.
+### Step 2 - Start above script on the `nodejs` server.
 
 	[nodejs-admin@nodejs nodejs]$ vim json_nodejs_kafka.js
 	[nodejs-admin@nodejs nodejs]$ node json_nodejs_kafka.js
@@ -595,7 +595,7 @@ What we are trying to achieve ?
 
 <a name="Step3ExecutecurlcommandtosendtheJSONtonodejs"></a>
 
-## #Step 3 - Execute `curl` command to send the JSON to `nodejs`.
+### Step 3 - Execute `curl` command to send the JSON to `nodejs`.
 
 	[nodejs-admin@nodejs nodejs]$ curl -H "Content-Type: application/json" -d '{"username":"xyz","password":"xyz"}' http://localhost:8125/upload
 
@@ -606,7 +606,7 @@ What we are trying to achieve ?
 
 <a name="Step4Outputonnodejsconsole"></a>
 
-## #Step 4 - Output on nodejs console
+### Step 4 - Output on nodejs console
 
 	[nodejs-admin@nodejs nodejs]$ node json_nodejs_kafka.js
 	{"username":"xyz","password":"xyz"}
@@ -622,7 +622,7 @@ What we are trying to achieve ?
 
 <a name="Step5Outputonthekafkaconsumerside"></a>
 
-## #Step 5 - Output on the `kafka` consumer side.
+### Step 5 - Output on the `kafka` consumer side.
 
 	[kafka-admin@kafka kafka_2.9.2-0.8.2.0]$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning
 	{"username":"xyz","password":"xyz"}
@@ -636,7 +636,7 @@ What we are trying to achieve ?
 
 <a name="UsefulLinks"></a>
 
-## ## Useful Links.
+#### Useful Links.
 
 [http://kafka.apache.org/documentation.html](http://kafka.apache.org/documentation.html "Kafka Documentation")
 
